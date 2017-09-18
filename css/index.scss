@@ -90,6 +90,11 @@ header, main, footer, aside, p, div {
 a {
     color: $themeFontColorBeige;
     text-decoration: none;
+    transition: transform 0.5s;
+
+    &:hover {
+        transform: scale(1.025);
+    }
 }
 
 ul {      
@@ -249,6 +254,11 @@ footer {
 
     a {
         font-size: 1.3em;
+        transition: color 0.5s;
+        
+        &:hover {
+            color: $themeFontColorBeige;
+        }
     }
 
     .author-text {
