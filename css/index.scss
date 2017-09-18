@@ -28,6 +28,7 @@ Color Guide
 
 #f0d8b3, rgba(240, 216, 179) - Beige (Header's font-color)
 #a42129 - Light burgundy (Author text, Wiki link)
+#3a3f29 - Dirty dark green (Hovered links)
 *****************************************/
 
 /* Table Of Contents
@@ -57,6 +58,7 @@ $generalTextFont: 'Raleway', sans-serif;
 $themeFontColorBeige: #f0d8b3;
 $themeFontColorBurgundy: #a42129; 
 $burgundyDark: #741919;
+$linkHoveredColor: #3a3f29;
 
 $bgBlack: rgba(13, 16, 12, 0.8);
 $bgBurgundyLight: rgba(164, 33, 41, 0.8);
@@ -89,11 +91,11 @@ header, main, footer, aside, p, div {
 
 a {
     color: $themeFontColorBeige;
-    text-decoration: none;
-    transition: transform 0.5s;
+    text-decoration: none;    
 
     &:hover {
-        transform: scale(1.025);
+        color: $linkHoveredColor;
+        border-color: $linkHoveredColor;          
     }
 }
 
@@ -200,6 +202,10 @@ main {
 
     p {
         padding: 0.5em 0;
+
+        &:hover {
+            background-color: $bgBurgundyLight;
+        }
     }
 }
 
@@ -225,6 +231,16 @@ aside {
             margin-right: 0.5em;
         }
     } 
+
+    a {
+        border-bottom: 2px dotted $themeFontColorBeige;
+
+        // transition: transform 0.5s;
+    
+        // &:hover {
+        //     transform: scale(1.025);
+        // }
+    }
 }
 
 .aside-img-container {
@@ -254,11 +270,12 @@ footer {
 
     a {
         font-size: 1.3em;
-        transition: color 0.5s;
+        border-bottom: 2px dotted $themeFontColorBurgundy;
+        // transition: color 0.5s;
         
-        &:hover {
-            color: $themeFontColorBeige;
-        }
+        // &:hover {
+        //     color: $themeFontColorBeige;
+        // }
     }
 
     .author-text {
