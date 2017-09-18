@@ -11,19 +11,19 @@ Author's URL: https://yuliya-ulanova.ru
 
 Typography Guide
 ********************
-Rock Salt (48px) - Header's logo
-Rock Salt (20px) - Footer's Wiki link
-Rock Salt (18px) - Introduction's blockquote, footer pre-wiki text
-Rock Salt (14px) - Footer's author text
-Raleway, Italic (48px) - Header's post-logo 
-Raleway (20px) - Introduction's general text, Main general text
-Ralewai, Bold Italic (14px) - Sidebar text 
+Rock Salt (48px) = 3.4em / edit 2.4em - Header's logo
+Rock Salt (20px) = 1.4em - Footer's Wiki link
+Rock Salt (18px) = 1.3em - Introduction's blockquote (edit 1.15em), footer pre-wiki text
+Rock Salt (14px) = 1em - Footer's author text
+Raleway, Italic (48px) = 3.4em / edit 2.4em - Header's post-logo 
+Raleway (20px) = 1.4em - Introduction's general text, Main general text
+Ralewai, Bold Italic (14px) = 1em - Sidebar text 
 ********************
 
 Color Guide
 ********************
 #a42129, rgba(164, 33, 41, 0.8) - Burgundy (Header's background, Sidebar'a background)
-#0d100c, rgba(13, 16, 12, ) - Black (Introduction's background)
+#0d100c, rgba(13, 16, 12, 0.8) - Black (Introduction's background)
 #741919 - (Footer's background, Introduction, Sidebar's border)
 
 #f0d8b3, rgba(240, 216, 179) - Beige (Header's font-color)
@@ -32,10 +32,225 @@ Color Guide
 
 /* Table Of Contents
 ********************************************************
-0. CSS Reset 
-1. General Styles (typography, etc.) 
-2. Header Style
-3. Main Body Content 
-4. Sidebar Content 
-5. Footer Content 
+0. Imports
+1. Sass Variables
+2. CSS Reset 
+4. Header Style
+5. Main Body Content 
+6. Sidebar Content 
+7. Footer Content 
 *********************************************************/
+
+/****************************************
+0. Imports
+****************************************/
+
+@import url('https://fonts.googleapis.com/css?family=Raleway|Rock+Salt');
+
+/****************************************
+1. Sass Variables
+****************************************/
+
+$themeFont: 'Rock Salt', cursive;
+$generalTextFont: 'Raleway', sans-serif;
+
+$themeFontColorBeige: #f0d8b3;
+$themeFontColorBurgundy: #a42129; 
+$burgundyDark: #741919;
+
+$bgBlack: rgba(13, 16, 12, 0.8);
+$bgBurgundyLight: rgba(164, 33, 41, 0.8);
+
+/****************************************
+2. CSS Reset
+****************************************/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: $burgundyDark url('../images/background-vintage.png') 50% no-repeat;    
+    background-size: cover;
+    color: $themeFontColorBeige;
+    font-family: $generalTextFont;
+    font-size: 14px;   
+}
+
+header, main, footer, aside, p, div {
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 2em;
+}
+
+a {
+    color: $themeFontColorBeige;
+    text-decoration: none;
+}
+
+ul {      
+    border-width: 3px 0;
+    border-style: solid; 
+    border-color: $burgundyDark;
+}
+
+li {
+    font-style: italic;
+    font-weight: bold;
+    list-style-type: none;
+}
+
+p {
+    padding: 0.5em 0;
+}
+
+/****************************************
+4. Header Style
+****************************************/
+
+header {
+    background-color: $bgBurgundyLight;    
+}
+
+h1 {
+    font-family: $themeFont; 
+    font-size: 2.4em;   
+}
+
+.post-logo {
+    font-size: 2.4em;
+    font-style: italic; 
+    position: relative;
+    top: -20px;
+    left: 130px;       
+}
+
+/****************************************
+5. Intro Style
+****************************************/
+
+.intro {
+    background-color: $bgBlack;
+    border-width: 8px 0;
+    border-style: solid; 
+    border-color: $burgundyDark;      
+
+    .container {
+        display: flex; 
+    }
+}
+
+.intro-img-container, .intro-container {
+    padding: 1.5em 0;
+}
+
+.intro-img-container {  
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+
+    img {
+        height: 255px; //original 323px   
+        //width: 276px;   
+    }
+}  
+
+.intro-container {
+    width: 70%;
+
+    div {
+        padding: 0.3em 0;
+    }
+}
+
+.intro-blockquote {
+    font-family: $generalTextFont;
+    font-size: 1.3em;
+    font-style: italic;
+}
+
+.intro-blockquote-author {
+    text-align: right;
+}
+
+.intro-text {
+    font-size: 1.4em;
+}
+
+/****************************************
+5. Main Content
+****************************************/
+
+main {
+    .container {
+        display: flex; 
+    }
+}
+
+.main-text {
+    font-size: 1.4em;
+    padding: 1.5em;
+    width: 60%;
+}
+
+/****************************************
+6. Sidebar Content 
+****************************************/
+
+aside {
+    background-color: $bgBurgundyLight;
+    padding: 1.5em;
+    width: 40%;
+
+    ul {
+        padding: 0.5em 0;
+    }
+
+    li {
+        display: flex;
+        align-items: center;
+        padding: 0.5em 0;
+
+        img {
+            margin-right: 0.5em;
+        }
+    } 
+}
+
+.aside-img-container {
+    padding: 2.5em 0;
+    img {       
+        width: 411px;
+        //height: 421px;        
+    }      
+}
+
+/****************************************
+7. Footer Content 
+****************************************/
+
+footer {
+    background-color: $burgundyDark;
+    font-family: $themeFont;
+    text-align: center;
+
+    .wiki-text {
+        font-size: 1.1em;
+    }
+
+    a, .author-text {
+        color: $themeFontColorBurgundy;
+    }
+
+    a {
+        font-size: 1.3em;
+    }
+
+    .author-text {
+        font-size: 1em;
+    }
+}
