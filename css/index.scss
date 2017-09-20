@@ -1,67 +1,76 @@
-    /***************************************
+/***************************************
 ****************************************
-Website Name: Mozart Tribute page
-Website URL: yuliya-ulanova/works/mozart-tribute.ru
+Website Name: Mozart Tribute Page
+Website URL: yuliya-ulanova.ru/works/mozart-tribute
 Description: Free Code Camp project for portfolio
 Tags: HTML5, CSS3, Sass, Tribute page
 Version: 1.0
 Website Author: Yuliya Ulanova
 Author's URL: https://yuliya-ulanova.ru
-*****************************************
-
-Typography Guide
-********************
-Rock Salt (48px) = 3.4em / edit 2.4em - Header's logo
-Rock Salt (20px) = 1.4em - Footer's Wiki link
-Rock Salt (18px) = 1.3em - Introduction's blockquote (edit 1.15em), footer pre-wiki text
-Rock Salt (14px) = 1em - Footer's author text
-Raleway, Italic (48px) = 3.4em / edit 2.4em - Header's post-logo 
-Raleway (20px) = 1.4em - Introduction's general text, Main general text
-Ralewai, Bold Italic (14px) = 1em - Sidebar text 
-********************
-
-Color Guide
-********************
-#a42129, rgba(164, 33, 41, 0.8) - Burgundy (Header's background, Sidebar'a background)
-#0d100c, rgba(13, 16, 12, 0.8) - Black (Introduction's background)
-#741919 - (Footer's background, Introduction, Sidebar's border)
-
-#f0d8b3, rgba(240, 216, 179) - Beige (Header's font-color)
-#a42129 - Light burgundy (Author text, Wiki link)
-#3a3f29 - Dirty dark green (Hovered links)
 *****************************************/
 
-/* Table Of Contents
+/*******************
+Typography Guide
+********************
+Raleway, Italic (33.6px = 2.4em) - Header's post-logo 
+Raleway (20px = 1.4em) - Introduction's general text, Main general text
+Ralewai, Italic (14px = 1em) - Sidebar text 
+Rock Salt (33.6px = 2.4em) - Header's logo
+Rock Salt (20px = 1.4em) - Footer's Wiki link
+Rock Salt (18px = 1.3em) - Introduction's blockquote, footer pre-wiki text
+Rock Salt (14px = 1em) - Footer's author text
+********************/
+
+/********************
+Color Guide
+*********************
+Backgrounds and Borders:
+#a42129 => rgba(164, 33, 41, 0.8) - Burgundy (Header's background, Sidebar'a background)
+#0d100c => rgba(13, 16, 12, 0.8) - Black (Introduction's background)
+#741919 - Burgundy Medium (Footer's background, Introduction, Sidebar's border)
+
+Font Colors:
+#f0d8b3 - Beige (Header's font-color)
+#a42129 - Burgundy Medium (Author text, Wiki link)
+#3a3f29 - Dirty Dark Green (Hovered links)
+*****************************************/
+
+/*******************************************************
+Table Of Contents
 ********************************************************
 0. Imports
 1. Sass Variables
 2. CSS Reset 
+3. Universal Style
 4. Header Style
-5. Main Body Content 
-6. Sidebar Content 
-7. Footer Content 
+5. Intro Style
+6. Main Content 
+7. Sidebar Content 
+8. Footer Content
+9. Responsive Style 
 *********************************************************/
 
 /****************************************
 0. Imports
 ****************************************/
-
+// Fonts
 @import url('https://fonts.googleapis.com/css?family=Raleway|Rock+Salt');
 
 /****************************************
 1. Sass Variables
 ****************************************/
-
+/* Font-family*/
+$generalFont: 'Raleway', sans-serif;
 $themeFont: 'Rock Salt', cursive;
-$generalTextFont: 'Raleway', sans-serif;
 
-$themeFontColorBeige: #f0d8b3;
-$themeFontColorBurgundy: #a42129; 
-$burgundyDark: #741919;
-$linkHoveredColor: #3a3f29;
+/* Color palette */
+$beigeColor: #f0d8b3;
+$burgundyMediumColor: #a42129; 
+$burgundyDarkColor: #741919;
+$dirtyDarkGreenColor: #3a3f29;
 
-$bgBlack: rgba(13, 16, 12, 0.8);
-$bgBurgundyLight: rgba(164, 33, 41, 0.8);
+$blackTransparentColor: rgba(13, 16, 12, 0.8);
+$burgundyMediumTransparentColor: rgba(164, 33, 41, 0.8);
 
 /****************************************
 2. CSS Reset
@@ -72,10 +81,10 @@ $bgBurgundyLight: rgba(164, 33, 41, 0.8);
 }
 
 body {
-    background: $burgundyDark url('../images/background-vintage.png') 50% no-repeat;    
+    background: $burgundyDarkColor url('../images/background-vintage.png') 50% no-repeat;    
     background-size: cover;
-    color: $themeFontColorBeige;
-    font-family: $generalTextFont;
+    color: $beigeColor;
+    font-family: $generalFont;
     font-size: 14px;   
 }
 
@@ -83,27 +92,19 @@ header, main, footer, aside, p, div {
     box-sizing: border-box;
 }
 
-.container {
-    margin: 0 auto;
-    max-width: 1200px;
-    padding: 0 2em;
-    flex-wrap: wrap;
-}
-
-a {
-    color: $themeFontColorBeige;
+a {    
     text-decoration: none;    
 
     &:hover {
-        color: $linkHoveredColor;
-        border-color: $linkHoveredColor;          
+        color: $dirtyDarkGreenColor;
+        border-color: $dirtyDarkGreenColor;          
     }
 }
 
 ul {      
     border-width: 3px 0;
     border-style: solid; 
-    border-color: $burgundyDark;
+    border-color: $burgundyDarkColor;
 }
 
 li {
@@ -113,11 +114,28 @@ li {
 }
 
 /****************************************
+3. Universal Style
+****************************************/
+
+.container {
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 2em;    
+}
+
+main, .intro {
+    .container {
+        display: flex; 
+    }
+}
+
+/****************************************
 4. Header Style
 ****************************************/
 
 header {
-    background-color: $bgBurgundyLight;    
+    background-color: $burgundyMediumTransparentColor;    
 }
 
 h1 {
@@ -139,14 +157,10 @@ h1 {
 ****************************************/
 
 .intro {
-    background-color: $bgBlack;
+    background-color: $blackTransparentColor;
     border-width: 8px 0;
     border-style: solid; 
-    border-color: $burgundyDark;      
-
-    .container {
-        display: flex; 
-    }
+    border-color: $burgundyDarkColor;
 }
 
 .intro-img-container, .intro-container {
@@ -173,7 +187,7 @@ h1 {
 }
 
 .intro-blockquote {
-    font-family: $generalTextFont;
+    font-family: $generalFont;
     font-size: 1.3em;
     font-style: italic;
 }
@@ -187,14 +201,8 @@ h1 {
 }
 
 /****************************************
-5. Main Content
+6. Main Content
 ****************************************/
-
-main {
-    .container {
-        display: flex; 
-    }
-}
 
 .main-text {
     font-size: 1.4em;
@@ -205,17 +213,17 @@ main {
         padding: 0.5em 0;
 
         &:hover {
-            background-color: $bgBurgundyLight;
+            background-color: $burgundyMediumTransparentColor;
         }
     }
 }
 
 /****************************************
-6. Sidebar Content 
+7. Sidebar Content 
 ****************************************/
 
 aside {
-    background-color: $bgBurgundyLight;
+    background-color: $burgundyMediumTransparentColor;
     padding: 1.5em;
     width: 40%;
 
@@ -233,31 +241,27 @@ aside {
         }
     } 
 
-    a {
-        border-bottom: 2px dotted $themeFontColorBeige;
-
-        // transition: transform 0.5s;
-    
-        // &:hover {
-        //     transform: scale(1.025);
-        // }
+    a {        
+        border-bottom: 2px dotted $beigeColor;
+        color: $beigeColor;
     }
 }
 
 .aside-img-container {
     padding: 2.5em 0;
+
     img {       
         width: 411px;
-        //height: 421px;        
+        height: 421px;        
     }      
 }
 
 /****************************************
-7. Footer Content 
+8. Footer Content 
 ****************************************/
 
 footer {
-    background-color: $burgundyDark;
+    background-color: $burgundyDarkColor;
     font-family: $themeFont;
     text-align: center;
 
@@ -266,17 +270,12 @@ footer {
     }
 
     a, .author-text {
-        color: $themeFontColorBurgundy;
+        color: $burgundyMediumColor;
     }
 
     a {
         font-size: 1.3em;
-        border-bottom: 2px dotted $themeFontColorBurgundy;
-        // transition: color 0.5s;
-        
-        // &:hover {
-        //     color: $themeFontColorBeige;
-        // }
+        border-bottom: 2px dotted $burgundyMediumColor;
     }
 
     .author-text {
@@ -285,21 +284,12 @@ footer {
 }
 
 /****************************************
-7. Responsive styles
+9. Responsive styles
 ****************************************/
-
-/*// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) { ... }*/
-
-/*// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) { ... }*/
 
 // Large devices (desktops, 992px and up)
 @media (max-width: 992px) {
-    /****************************************
-    4. Header Style
-    ****************************************/
-
+    /* 4. Header Style */
     header {
         text-align: center;
     }
@@ -309,9 +299,7 @@ footer {
         width: inherit;
     }
 
-    /****************************************
-    5. Intro Style
-    ****************************************/
+    /* 5. Intro Style */
 
     .intro-img-container {  
         width: 100%;        
@@ -321,9 +309,7 @@ footer {
         width: 100%;
     }    
 
-    /****************************************
-    5. Main Content
-    ****************************************/
+    /* 6. Main Content */
 
     main {
         .container {
@@ -335,9 +321,7 @@ footer {
         width: 100%;
     }
 
-    /****************************************
-    6. Sidebar Content 
-    ****************************************/
+    /* 7. Sidebar Content */
 
     aside {        
         width: 100%;        
@@ -347,6 +331,3 @@ footer {
         display: none;      
     }
 }
-
-/*// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { ... }*/
