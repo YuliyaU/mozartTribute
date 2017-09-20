@@ -87,6 +87,7 @@ header, main, footer, aside, p, div {
     margin: 0 auto;
     max-width: 1200px;
     padding: 0 2em;
+    flex-wrap: wrap;
 }
 
 a {
@@ -157,9 +158,9 @@ h1 {
     display: flex;
     justify-content: space-around;
 
-    img {
-        height: 255px; //original 323px   
-        //width: 276px;   
+    img { 
+        width: 219px; // original width 253px         
+        height: 260px; // original height 300px
     }
 }  
 
@@ -282,3 +283,70 @@ footer {
         font-size: 1em;
     }
 }
+
+/****************************************
+7. Responsive styles
+****************************************/
+
+/*// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }*/
+
+/*// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }*/
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
+    /****************************************
+    4. Header Style
+    ****************************************/
+
+    header {
+        text-align: center;
+    }
+
+    .post-logo {        
+        left: inherit;
+        width: inherit;
+    }
+
+    /****************************************
+    5. Intro Style
+    ****************************************/
+
+    .intro-img-container {  
+        width: 100%;        
+    }  
+
+    .intro-container {
+        width: 100%;
+    }    
+
+    /****************************************
+    5. Main Content
+    ****************************************/
+
+    main {
+        .container {
+            flex-wrap: wrap-reverse;
+        }
+    }
+
+    .main-text {        
+        width: 100%;
+    }
+
+    /****************************************
+    6. Sidebar Content 
+    ****************************************/
+
+    aside {        
+        width: 100%;        
+    } 
+
+    .aside-img-container {
+        display: none;      
+    }
+}
+
+/*// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }*/
